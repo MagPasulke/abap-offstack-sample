@@ -20,6 +20,7 @@ CLASS zcl_fibonacci IMPLEMENTATION.
     DATA fib_prev TYPE i VALUE 0.
     DATA fib_curr TYPE i VALUE 1.
     DATA fib_next TYPE i.
+    dac
 
     " Input validation
     IF n < 0 OR n > c_max_n.
