@@ -32,21 +32,6 @@ The project contains a class `ZCL_FIBONACCI` with a method `CALC_ELEMENT` that c
 | 10| 55   |
 | 20| 6765 |
 
-## Testing
-
-Unit tests are included in the `/test` directory to validate:
-- Base cases (F(0), F(1))
-- Sequence correctness 
-- Exception handling for invalid inputs
-
-## Quality Standards
-
-- ✅ All abaplint checks pass
-- ✅ Proper ABAP formatting
-- ✅ Exception handling implemented
-- ✅ Input validation included
-- ✅ Unit tests provided
-
 ## Usage
 
 ```abap
