@@ -10,7 +10,7 @@ public section.
     importing
       !N type I
     returning
-      value(RESULT) type I
+      value(RESULT) type INT8
     raising
       CX_SY_RANGE_OUT_OF_BOUNDS .
 protected section.
@@ -29,9 +29,9 @@ CLASS ZCL_FIBONACCI IMPLEMENTATION.
 
 
   METHOD calc_element.
-    DATA fib_prev TYPE i VALUE 0.
-    DATA fib_curr TYPE i VALUE 1.
-    DATA fib_next TYPE i.
+    DATA fib_prev TYPE int8 VALUE 0.
+    DATA fib_curr TYPE int8 VALUE 1.
+    DATA fib_next TYPE int8.
 
     " Input validation
     IF n < 0 OR n > c_max_n.
