@@ -15,7 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
-    - name: Install abaplint
-      run: npm install -g @abaplint/cli
-    - name: Run abaplint
-      run: abaplint
+    - name: Install dependencies
+      run: npm install
+    - name: Lint
+      run: npm run lint
+    - name: Transpile and run unit tests
+      run: npm run unit
