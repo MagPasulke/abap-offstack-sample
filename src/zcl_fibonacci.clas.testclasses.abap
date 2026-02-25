@@ -31,7 +31,7 @@ CLASS ltcl_fibonacci_test IMPLEMENTATION.
     DATA(result) = cut->calc_element( 0 ).
     cl_abap_unit_assert=>assert_equals(
       act = result
-      exp = 1
+      exp = 0
       msg = 'Fibonacci of 0 should be 0'
     ).
   ENDMETHOD.
