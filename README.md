@@ -1,57 +1,52 @@
-# ABAP Fibonacci Calculator
+# ABAP Offstack Sample
 
-This is an ABAP offstack project demonstrating a Fibonacci sequence calculator class.
+A sample project showcasing how to use [abaplint](https://abaplint.org) and [abap-transpiler](https://github.com/abaplint/transpiler) to perform **off-stack ABAP linting and unit testing** — no SAP system required.
 
-## Overview
+## Purpose
 
-The project contains a class `ZCL_FIBONACCI` with a method `CALC_ELEMENT` that calculates the nth Fibonacci number efficiently and safely.
+This project demonstrates that ABAP code quality checks and unit tests can be executed entirely locally or in a CI/CD pipeline, without connecting to a SAP backend.
 
-## Features
+- **Static code analysis** via `abaplint`
+- **Unit test execution** via `abap_transpile` + Node.js
 
-- **Input validation**: Accepts values from 0 to 50
-- **Exception handling**: Raises `CX_SY_RANGE_OUT_OF_BOUNDS` for invalid inputs
-- **Efficient calculation**: Uses iterative approach for optimal performance
-- **Clean code**: Follows ABAP coding standards and passes all abaplint checks
+## How It Works
 
-## Class Structure
+1. **Lint**: `abaplint` parses and analyzes the ABAP source files in `/src` against the rules defined in `abaplint.jsonc`.
+2. **Transpile**: `abap_transpile` converts the ABAP classes (including local test classes) into JavaScript.
+3. **Run**: The transpiled output is executed with Node.js, which runs the ABAP unit tests off-stack.
 
-### ZCL_FIBONACCI
-- **Method**: `calc_element`
-  - **Parameter**: `n` (TYPE i) - The position in the Fibonacci sequence (0-50)
-  - **Returns**: The nth Fibonacci number
-  - **Raises**: `cx_sy_range_out_of_bounds` for invalid inputs
+## Project Structure
 
-## Fibonacci Sequence Examples
-
-| n | F(n) |
-|---|------|
-| 0 | 0    |
-| 1 | 1    |
-| 2 | 1    |
-| 3 | 2    |
-| 10| 55   |
-| 20| 6765 |
-
-## Testing
-
-Unit tests are included in the `/test` directory to validate:
-- Base cases (F(0), F(1))
-- Sequence correctness 
-- Exception handling for invalid inputs
-
-## Quality Standards
-
-- ✅ All abaplint checks pass
-- ✅ Proper ABAP formatting
-- ✅ Exception handling implemented
-- ✅ Input validation included
-- ✅ Unit tests provided
-
-## Usage
-
-```abap
-DATA(fibonacci) = NEW zcl_fibonacci( ).
-DATA(result) = fibonacci->calc_element( 10 ).
-" result = 55
 ```
-Learning open-abap &amp; abaplint
+src/                     # ABAP source files
+abaplint.jsonc           # abaplint configuration (rules, syntax version, file paths)
+package.json             # Node.js dependencies and scripts
+```
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org) (LTS recommended)
+
+## Setup
+
+```bash
+npm install
+```
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run lint` | Run abaplint static code analysis |
+| `npm run unit` | Transpile ABAP and run unit tests via Node.js |
+| `npm test` | Run lint + unit tests |
+
+## CI/CD
+
+The `.github/workflows/qualitychecks.yml` workflow runs `abaplint` automatically on every push and pull request.
+
+## References
+
+- [abaplint](https://abaplint.org)
+- [abaplint/transpiler](https://github.com/abaplint/transpiler)
+- [open-abap](https://github.com/open-abap)

@@ -1,25 +1,37 @@
-CLASS zcl_fibonacci DEFINITION PUBLIC FINAL CREATE PUBLIC.
-  PUBLIC SECTION.
-    CLASS-METHODS class_constructor.
+class ZCL_FIBONACCI definition
+  public
+  final
+  create public .
 
-    METHODS calc_element
-      IMPORTING n               TYPE i
-      RETURNING VALUE(result)   TYPE i
-      RAISING   cx_sy_range_out_of_bounds.
+public section.
 
+  class-methods CLASS_CONSTRUCTOR .
+  methods CALC_ELEMENT
+    importing
+      !N type I
+    returning
+      value(RESULT) type INT8
+    raising
+      CX_SY_RANGE_OUT_OF_BOUNDS .
+protected section.
   PRIVATE SECTION.
     CONSTANTS c_max_n TYPE i VALUE 50.
 ENDCLASS.
 
-CLASS zcl_fibonacci IMPLEMENTATION.
+
+
+CLASS ZCL_FIBONACCI IMPLEMENTATION.
+
+
   METHOD class_constructor.
     " Class initialization if needed
   ENDMETHOD.
 
+
   METHOD calc_element.
-    DATA fib_prev TYPE i VALUE 0.
-    DATA fib_curr TYPE i VALUE 1.
-    DATA fib_next TYPE i.
+    DATA fib_prev TYPE int8 VALUE 0.
+    DATA fib_curr TYPE int8 VALUE 1.
+    DATA fib_next TYPE int8.
 
     " Input validation
     IF n < 0 OR n > c_max_n.
