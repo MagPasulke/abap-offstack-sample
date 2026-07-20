@@ -41,7 +41,7 @@ CLASS zcl_fibonacci IMPLEMENTATION.
     " Handle base cases
     CASE n.
       WHEN 0.
-        result = 1.
+        result = 0.
         RETURN.
       WHEN 1.
         result = 1.
