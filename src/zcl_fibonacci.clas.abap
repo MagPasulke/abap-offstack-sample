@@ -1,3 +1,7 @@
+"! <p class="shorttext synchronized" lang="en">Fibonacci Number Calculator</p>
+"! <p>This class calculates Fibonacci sequence elements using an iterative approach.</p>
+"! <p>The Fibonacci sequence is defined as: F(0) = 0, F(1) = 1, F(n) = F(n-1) + F(n-2) for n >= 2.</p>
+"! <p>Input values are restricted to the range 0..50 to prevent integer overflow.</p>
 CLASS zcl_fibonacci DEFINITION
   PUBLIC
   FINAL
@@ -5,7 +9,13 @@ CLASS zcl_fibonacci DEFINITION
 
   PUBLIC SECTION.
 
+    "! Class constructor - performs any required class-level initialization
     CLASS-METHODS class_constructor .
+
+    "! Calculates the n-th element of the Fibonacci sequence (valid range: 0..50).
+    "! @parameter n      | The zero-based index of the Fibonacci element to calculate
+    "! @parameter result | The Fibonacci number at position n
+    "! @raising cx_sy_range_out_of_bounds | Raised when n is negative or greater than 50
     METHODS calc_element
     IMPORTING
       !n TYPE i
@@ -15,6 +25,7 @@ CLASS zcl_fibonacci DEFINITION
       cx_sy_range_out_of_bounds .
   PROTECTED SECTION.
   PRIVATE SECTION.
+    "! Maximum allowed input value; prevents integer overflow of the int8 return type
     CONSTANTS c_max_n TYPE i VALUE 50.
 ENDCLASS.
 
